@@ -5,6 +5,10 @@ RSpec.describe Review, type: :model do
     it 'Creates a Review' do
       expect(FactoryBot.build(:review)).to be_valid
     end
+
+    it 'with empty text' do
+      expect(FactoryBot.build(:review, review_text: nil)).to be_valid
+    end
   end
 
   context "It can't create an invalid review" do
