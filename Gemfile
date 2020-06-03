@@ -19,6 +19,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 gem "react_on_rails", "11.1.4" # Update to the current version
+gem 'devise'
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -33,7 +35,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core.git', branch: 'master'
+  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations.git', branch: 'master'
+  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks.git', branch: 'master'
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails.git', branch: 'master'
+  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support.git', branch: 'master'
 end
 
 group :development do
