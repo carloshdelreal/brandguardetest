@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'home#home'
+
+  devise_scope :user do
+    authenticated :user do
+      root 'home#home', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+    get 'sign_in', to: 'devise/sessions#new'
+    get 'sign_up', to: 'devise/registrations#new'
+    get 'sign_out', to: 'devise/sessions#destroy'
+    get 'forgot_password', to: 'devise/passwords#new'
+    get 'reset_password', to: 'devise/passwords#edit'
+  end
 
   namespace :api do
     namespace :v1 do
@@ -13,7 +27,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
 
   get '*path', to: redirect('/')
 end
